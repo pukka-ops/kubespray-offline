@@ -12,7 +12,7 @@ source ./config.sh
 
 #run ./install-docker.sh
 #run ./install-nerdctl.sh
-run ./install-containerd.sh
+# run ./install-containerd.sh
 run ./precheck.sh
 run ./prepare-pkgs.sh || exit 1
 # run ./install-python.sh || exit 1

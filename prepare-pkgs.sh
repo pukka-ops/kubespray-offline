@@ -47,7 +47,7 @@ elif [ -e /etc/openEuler-release ]; then
     echo "==> Install required packages"
     $sudo dnf check-update
 
-    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git || exit 1
+    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git podman || exit 1
 
     case "$VERSION_ID" in
         22.03)
