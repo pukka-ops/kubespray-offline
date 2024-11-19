@@ -51,10 +51,12 @@ elif [ -e /etc/openEuler-release ]; then
 
     case "$VERSION_ID" in
         22.03)
-            $sudo dnf install -y python3 python3-pip python3-devel || exit 1
+            # $sudo dnf install -y python3 python3-pip python3-devel || exit 1
             $sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel readline-devel sqlite-devel tk-devel libxml2-devel libxslt-devel zlib-devel make || exit 1
+            ./install-python.sh
             ;;
         24.03)
+            $sudo dnf install -y python3 python3-pip python3-devel || exit 1
             ;;
         *)
             echo "Unknown version_id: $VERSION_ID"
@@ -65,8 +67,9 @@ elif [ -e /etc/openEuler-release ]; then
 elif [ -e /etc/kylin-release ]; then
     echo "==> Install required packages"
     $sudo dnf check-update
-    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git python3 python3-pip python3-devel || exit 1
+    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git || exit 1
     $sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel readline-devel sqlite-devel tk-devel libxml2-devel libxslt-devel zlib-devel make || exit 1
+    ./install-python.sh
 else
     $sudo apt update
     if [ "$1" == "--upgrade" ]; then

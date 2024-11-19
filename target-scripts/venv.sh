@@ -3,7 +3,7 @@
 source /etc/os-release
 
 # Now always use specific python version
-PY_VERSION=3.12
+PY_VERSION=3.11
 
 if [ -e /etc/redhat-release ]; then
     if [[ "$VERSION_ID" =~ ^7.* ]]; then
@@ -19,6 +19,12 @@ else
     if [[ "$VERSION_ID" =~ ^24 ]]; then
         PY_VERSION=3.12
     fi
+fi
+
+if [ -e /etc/openEuler-release ]; then
+  if [[ "$VERSION_ID" = "22.03" ]]; then
+    PY_VERSION=3.12
+  fi
 fi
 
 python3=python${PY_VERSION}

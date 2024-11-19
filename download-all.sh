@@ -15,7 +15,7 @@ source ./config.sh
 run ./install-containerd.sh
 run ./precheck.sh
 run ./prepare-pkgs.sh || exit 1
-run ./install-python.sh || exit 1
+# run ./install-python.sh || exit 1
 run ./prepare-py.sh
 run ./get-kubespray.sh
 if $ansible_in_container; then

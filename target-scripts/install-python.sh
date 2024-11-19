@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source /etc/os-re
 source ./config.sh
 
 ENABLE_DOWNLOAD=${ENABLE_DOWNLOAD:-false}
@@ -38,6 +39,7 @@ fi
 echo "==> Install python"
 tar xvf "${FILES_DIR}/Python-${PYTHON_VERSION}.tgz" -C /tmp
 cd /tmp/Python-${PYTHON_VERSION} || exit 1
-./configure --enable-optimizations
+./configure
 make -j "$(nproc)"
 sudo make altinstall
+sudo ldconfig
