@@ -24,7 +24,16 @@ if [ -e /etc/redhat-release ]; then
     sudo dnf install -y $DNF_OPTS python3.11 || exit 1
     #sudo dnf install -y $DNF_OPTS python3.11-devel || exit 1
 elif [ -e /etc/openEuler-release ]; then
-    ./install-python.sh || exit 1
+    if [[ "$VERSION_ID" == "22.03" ]]; then
+        ./install-python.sh || exit 1
+    fi
+    if [[ "$VERSION_ID" == "24.03" ]]; then
+        DNF_OPTS=
+    if [[ $IS_OFFLINE = "true" ]]; then
+            DNF_OPTS="--disablerepo=* --enablerepo=offline-repo"
+        fi
+        sudo dnf install -y $DNF_OPTS python3 || exit 1
+    fi
 elif [ -e /etc/kylin-release ]; then
     ./install-python.sh || exit 1
 else

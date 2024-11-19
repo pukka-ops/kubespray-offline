@@ -107,6 +107,10 @@ Install ansible:
     pip install -U pip                # update pip
     pip install -r requirements.txt   # Install ansible
 
+Install ruamel.yaml:
+
+    pip install ruamel.yaml
+
 ### Create offline.yml
 
 Copy [offline.yml](./offline.yml) file to your group_vars/all/offline.yml of your inventory directory, and edit it.
@@ -130,6 +134,14 @@ Then execute `offline-repo.yml` playbook.
 
     cd ${kubespray_dir}
     ansible-playbook -i ${your_inventory_file} offline-repo.yml
+
+### Setup firewalld
+
+    # Add source to firewalld trusted zone
+    # 10.0.16.0/24 is the IP range of the target nodes, you need to change it to your target nodes' IP range
+    ansible -i inventory/mycluster/hosts.yaml all -m shell -a "firewall-cmd --zone=trusted --add-source=10.0.16.0/24 --permanent"
+    # Reload firewalld
+    ansible -i inventory/mycluster/hosts.yaml all -m shell -a "firewall-cmd --reload"
 
 ### Run kubespray
 
