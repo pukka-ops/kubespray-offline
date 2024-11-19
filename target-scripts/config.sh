@@ -12,3 +12,6 @@ CNI_VERSION=1.4.0
 
 # container registry port
 REGISTRY_PORT=${REGISTRY_PORT:-35000}
+
+# Install python from source
+PYTHON_VERSION=3.12.7

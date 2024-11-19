@@ -42,6 +42,31 @@ if [ -e /etc/redhat-release ]; then
             exit 1
             ;;
     esac
+# openEuler 22.03/24.03
+elif [ -e /etc/openEuler-release ]; then
+    echo "==> Install required packages"
+    $sudo dnf check-update
+
+    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git || exit 1
+
+    case "$VERSION_ID" in
+        22.03)
+            $sudo dnf install -y python3 python3-pip python3-devel || exit 1
+            $sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel readline-devel sqlite-devel tk-devel libxml2-devel libxslt-devel zlib-devel make || exit 1
+            ;;
+        24.03)
+            ;;
+        *)
+            echo "Unknown version_id: $VERSION_ID"
+            exit 1
+            ;;
+    esac
+# KylinOS V10 SP3
+elif [ -e /etc/kylin-release ]; then
+    echo "==> Install required packages"
+    $sudo dnf check-update
+    $sudo dnf install -y rsync gcc libffi-devel dnf-utils dnf-plugins-core createrepo git python3 python3-pip python3-devel || exit 1
+    $sudo dnf install -y gcc openssl-devel bzip2-devel libffi-devel readline-devel sqlite-devel tk-devel libxml2-devel libxslt-devel zlib-devel make || exit 1
 else
     $sudo apt update
     if [ "$1" == "--upgrade" ]; then

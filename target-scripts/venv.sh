@@ -3,7 +3,7 @@
 source /etc/os-release
 
 # Now always use specific python version
-PY_VERSION=3.11
+PY_VERSION=3.12
 
 if [ -e /etc/redhat-release ]; then
     if [[ "$VERSION_ID" =~ ^7.* ]]; then

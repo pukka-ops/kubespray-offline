@@ -13,7 +13,7 @@ setup_yum_repos() {
         #sudo sed -i "s/^enabled=.*/enabled=0/" $repo
         sudo mv "${repo}" "${repo}.original"
     done
-        
+
     echo "===> Setup local yum repository"
     cat <<EOF | sudo tee /etc/yum.repos.d/offline.repo
 [offline-repo]
@@ -57,6 +57,10 @@ EOF
 }
 
 if [ -e /etc/redhat-release ]; then
+    setup_yum_repos
+elif [ -e /etc/openEuler-release ]; then
+    setup_yum_repos
+elif [ -e /etc/kylin-release ]; then
     setup_yum_repos
 else
     setup_deb_repos

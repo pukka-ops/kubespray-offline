@@ -23,6 +23,10 @@ if [ -e /etc/redhat-release ]; then
     fi
     sudo dnf install -y $DNF_OPTS python3.11 || exit 1
     #sudo dnf install -y $DNF_OPTS python3.11-devel || exit 1
+elif [ -e /etc/openEuler-release ]; then
+    ./install-python.sh || exit 1
+elif [ -e /etc/kylin-release ]; then
+    ./install-python.sh || exit 1
 else
     # Ubuntu
     sudo apt update

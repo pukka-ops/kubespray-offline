@@ -29,7 +29,7 @@ fi
 
 if [ ! -e outputs/files/${KUBESPRAY_TARBALL} ]; then
     echo "===> Download ${KUBESPRAY_TARBALL}"
-    curl -SL https://github.com/kubernetes-sigs/kubespray/archive/refs/tags/v${KUBESPRAY_VERSION}.tar.gz >outputs/files/${KUBESPRAY_TARBALL} || exit 1
+    curl -SL https://github.com/kubernetes-sigs/kubespray/archive/refs/tags/v${KUBESPRAY_VERSION}.tar.gz > outputs/files/${KUBESPRAY_TARBALL} || exit 1
 
     remove_kubespray_cache_dir
 fi

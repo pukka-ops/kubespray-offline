@@ -1,0 +1,61 @@
+# Do not require docker anymore
+#docker-ce
+#containerd.io
+
+# kubespray: required_pkgs
+device-mapper-libs
+nss
+conntrack
+conntrack-tools
+container-selinux
+libseccomp
+
+# compilers (for cffi, etc)
+gcc
+annobin
+libffi-devel
+openssl
+openssl-libs
+openssl-devel
+
+# kubespray: common_required_pkgs
+curl
+rsync
+socat
+unzip
+e2fsprogs
+xfsprogs
+ebtables
+bash-completion
+
+ipvsadm
+ipset
+
+# others
+audit
+python3-dnf-plugin-versionlock
+firewalld
+gnupg2
+lvm2
+cifs-utils
+lsof
+sshpass
+vim
+wget
+ethtool
+net-tools
+chrony
+tar
+python3-libselinux
+libnetfilter_cttimeout
+libnetfilter_cthelper
+nfs-utils
+dnf-utils
+dnf-plugins-core
+createrepo
+wget
+nc
+
+# nfs
+#rpcbind
+#nfs-utils

@@ -2,8 +2,8 @@
 # offline.yml sample
 #
 
-http_server: "http://YOUR_HOST"
-registry_host: "YOUR_HOST:35000"
+http_server: "http://10.0.12.107"
+registry_host: "10.0.12.107:35000"
 
 # Insecure registries for containerd
 containerd_registries_mirrors:
