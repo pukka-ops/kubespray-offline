@@ -21,9 +21,11 @@ PKGS=$(cat pkglist/openEuler/*.txt pkglist/openEuler/${VERSION_MAJOR}/*.txt | gr
 CACHEDIR=cache/cache-rpms
 mkdir -p $CACHEDIR
 
-if [ "$VERSION_MAJOR" = "22.03" ]; then
-    RT="sudo dnf download --resolve --alldeps --downloaddir $CACHEDIR"
-fi
+# if [ "$VERSION_MAJOR" = "22.03" ]; then
+#     RT="sudo dnf download --resolve --alldeps --downloaddir $CACHEDIR"
+# fi
+
+RT="sudo dnf download --resolve --alldeps --downloaddir $CACHEDIR"
 
 echo "==> Downloading: " $PKGS
 $RT $PKGS || {
